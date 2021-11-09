@@ -1,0 +1,13 @@
+<mat-card class="products"> 
+    <mat-card-subtitle>{{producto.name}}</mat-card-subtitle>  
+    <img mat-card-image src="{{producto.photo_url}}">
+    <mat-card-content *ngIf="detail">{{producto.description}}</mat-card-content>
+    <mat-card-title>{{producto.price | currency}}</mat-card-title>
+    <mat-card-actions>
+        <button mat-raised-button color="accent">Comprar</button>
+        <a href="http://localhost:3000/producto/{{producto.id}}"> <button mat-raised-button color="accent" *ngIf="!detail">Ver Mas</button></a>
+
+    </mat-card-actions>
+    <mat-card-footer *ngIf="!detail" >Stock: {{producto.stock}}</mat-card-footer>
+</mat-card>
+

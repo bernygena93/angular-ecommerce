@@ -1,0 +1,19 @@
+<div>
+    <mat-toolbar color="primary">
+        <button mat-button (click)="refresh()">Menu</button>
+    </mat-toolbar>
+    <mat-toolbar id="segundaBarra" color="primary">
+        <ng-container *ngIf="logout">
+            <button mat-button [matMenuTriggerFor]="menu"><mat-icon>perm_identity</mat-icon></button>
+            <mat-menu #menu="matMenu">
+                <button mat-menu-item routerLink="/login"><mat-icon>login</mat-icon>Ingresar</button>
+                <button mat-menu-item routerLink="register"><mat-icon>assignment</mat-icon> Registrarse</button>
+            </mat-menu>
+        </ng-container>
+        <ng-container *ngIf="!logout">
+            <small>{{user}}</small>
+            <button mat-button (click)="logOut()">Salir</button>
+        </ng-container>
+    </mat-toolbar>
+</div>
+

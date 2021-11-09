@@ -1,0 +1,7 @@
+<mat-toolbar color="accent">
+    <span>{{products.name}}</span>
+    <span>{{products.price | currency}}</span>
+</mat-toolbar>
+<div>
+    <app-product [producto]="products" [detail]="true"></app-product>
+</div>

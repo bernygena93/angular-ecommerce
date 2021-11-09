@@ -1,0 +1,29 @@
+<div>
+    <form class="example-form form form" [formGroup]="myForm" (ngSubmit)="registrarse()">
+        <mat-icon>account_circle</mat-icon>
+        <h2 *ngIf="register">Ingresar</h2>
+        <h2 *ngIf="!register">Registrarse</h2>
+        <mat-form-field class="example-full-width" *ngIf="!register">
+            <input matInput type="text" formControlName="name" placeholder="Nombre">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input matInput type="email" formControlName="email" placeholder="Email">
+        </mat-form-field>
+        <small *ngIf="myForm.get('email')?.errors && myForm.get('email')?.dirty  && !register">
+            El campo es obligatorio
+        </small>
+        <mat-form-field class="example-full-width" *ngIf="!register">
+            <input matInput type="text" formControlName="phone" placeholder="Telefono">
+        </mat-form-field>
+        <mat-form-field class="example-full-width">
+            <input matInput formControlName="password" [type]="hide ? 'password' : 'text'" placeholder="Contraseña">
+            <button mat-icon-button matSuffix (click)="hide = !hide" [attr.aria-label]="'Hide password'" [attr.aria-pressed]="hide"></button>
+        </mat-form-field>
+        <ng-container *ngIf="myForm.get( 'password')?.errors && myForm.get( 'password')?.dirty ">
+            <small *ngIf="myForm.get( 'password')?.hasError( 'required') && !register">El campo es obligatorio</small>
+            <small *ngIf="myForm.get( 'password')?.hasError( 'minlength') && !register">Debe contener al menos 6 caracteres</small>
+        </ng-container>
+        <button *ngIf="!register" type="submit " mat-raised-button  color="accent" [disabled]="myForm?.invalid ">Registarse</button>
+        <button *ngIf="register" type="submit " mat-raised-button  color="accent" [disabled]="myForm?.invalid ">Ingresar</button>
+    </form>
+</div>

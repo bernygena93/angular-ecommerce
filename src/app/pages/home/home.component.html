@@ -1,0 +1,26 @@
+<mat-toolbar color="accent" class="menuUser">
+    <button mat-mini-fab color="accent" aria-label="Example icon button with a plus one icon">
+        <mat-icon>favorite</mat-icon>
+      </button>
+            <button mat-mini-fab color="accent" (click)="carrito()">
+                <mat-icon>shopping_cart</mat-icon>
+            </button>    
+</mat-toolbar>
+<div class="container" *ngIf="productos">
+    <ng-container *ngFor="let product of products">
+        <div class="cards">  
+            <app-product [producto]="product" [detail]="false"></app-product>
+            <mat-card-actions>
+                <button mat-mini-fab color="link" class="cartFavorite" aria-label="Example icon button with a plus one icon">
+                    <mat-icon>favorite</mat-icon>
+                </button>
+                <button mat-mini-fab color="link" class="cartFavorite" (click)="addCart(product)">
+                    <mat-icon>shopping_cart</mat-icon>
+                </button>
+            </mat-card-actions> 
+        </div>
+    </ng-container>
+</div>
+<ng-container >
+<app-cart-shop [hidden]="productos"></app-cart-shop>
+</ng-container>
